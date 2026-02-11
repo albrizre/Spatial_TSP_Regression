@@ -3,7 +3,7 @@ This repository contains the R code used associated with the paper...
 The scripts are organized sequentially into two main groups: **Simulation Studies** and **TSPLIB Empirical Analysis**.
 
 ### 1. Simulation Studies (1a – 1f)
-These scripts establish the baseline by simulating various spatial point processes and applying functional analysis.
+These scripts establish the baseline by simulating various spatial point processes and applying functional data analysis.
 
 * **1a Sim study Poisson clust.R**: 
 * **1b Sim study Poisson hom.R**: 

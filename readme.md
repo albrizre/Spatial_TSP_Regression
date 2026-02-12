@@ -1,6 +1,6 @@
 This repository contains the R code used associated with the paper...
 
-The scripts are organized sequentially into two main groups: **Simulation Studies** and **TSPLIB Empirical Analysis**.
+The scripts are organized sequentially into two main groups: **Simulation Studies** and **TSPLIB Analysis**.
 
 ### 1. Simulation Studies (1a – 1f)
 These scripts establish the baseline by simulating various spatial point processes and applying functional data analysis.

@@ -5,9 +5,9 @@ The scripts are organized sequentially into two main groups: **Simulation Studie
 ### 1. Simulation Studies (1a – 1f)
 These scripts establish the baseline by simulating various spatial point processes and applying functional data analysis.
 
-* **1a Sim study Poisson clust.R**: 
-* **1b Sim study Poisson hom.R**: 
-* **1c Sim study Poisson reg.R**:
+* **1a Sim study clust.R**: 
+* **1b Sim study hom.R**: 
+* **1c Sim study reg.R**:
 * **1d Linear regression analysis.R**: 
 * **1e Functional regression analysis.R**: 
 * **1f FPCA.R**: 

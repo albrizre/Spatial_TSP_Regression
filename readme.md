@@ -7,7 +7,7 @@ These scripts establish the baseline by simulating various spatial point process
 
 * **1a Sim study Poisson clust.R**: 
 * **1b Sim study Poisson hom.R**: 
-* **1c Sim study Poisson inhib.R**:
+* **1c Sim study Poisson reg.R**:
 * **1d Linear regression analysis.R**: 
 * **1e Functional regression analysis.R**: 
 * **1f FPCA.R**: 

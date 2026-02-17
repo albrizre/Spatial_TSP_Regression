@@ -40,12 +40,12 @@ lm_fit_global=lm(log(opt)~log(sd),data=data)
 summary(lm_fit_global)
 lm_fit_global_R=lm(log(opt)~log(sd)*R,data=data)
 summary(lm_fit_global_R)
-print(round(mean(100*abs(lm_fit_global$fitted.values[data$Type=="hom"]-lm_fit_global$model[data$Type=="hom",1])/lm_fit_global$model[data$Type=="hom",1]),2))
-print(round(mean(100*abs(lm_fit_global_R$fitted.values[data$Type=="hom"]-lm_fit_global_R$model[data$Type=="hom",1])/lm_fit_global_R$model[data$Type=="hom",1]),2))
-print(round(mean(100*abs(lm_fit_global$fitted.values[data$Type=="clust"]-lm_fit_global$model[data$Type=="clust",1])/lm_fit_global$model[data$Type=="clust",1]),2))
-print(round(mean(100*abs(lm_fit_global_R$fitted.values[data$Type=="clust"]-lm_fit_global_R$model[data$Type=="clust",1])/lm_fit_global_R$model[data$Type=="clust",1]),2))
-print(round(mean(100*abs(lm_fit_global$fitted.values[data$Type=="reg"]-lm_fit_global$model[data$Type=="reg",1])/lm_fit_global$model[data$Type=="reg",1]),2))
-print(round(mean(100*abs(lm_fit_global_R$fitted.values[data$Type=="reg"]-lm_fit_global_R$model[data$Type=="reg",1])/lm_fit_global_R$model[data$Type=="reg",1]),2))
+print(mean(100*abs(exp(lm_fit_global$fitted.values[data$Type=="clust"])-exp(lm_fit_global$model[data$Type=="clust",1]))/exp(lm_fit_global$model[data$Type=="clust",1])))
+print(mean(100*abs(exp(lm_fit_global_R$fitted.values[data$Type=="clust"])-exp(lm_fit_global_R$model[data$Type=="clust",1]))/exp(lm_fit_global_R$model[data$Type=="clust",1])))
+print(mean(100*abs(exp(lm_fit_global$fitted.values[data$Type=="hom"])-exp(lm_fit_global$model[data$Type=="hom",1]))/exp(lm_fit_global$model[data$Type=="hom",1])))
+print(mean(100*abs(exp(lm_fit_global_R$fitted.values[data$Type=="hom"])-exp(lm_fit_global_R$model[data$Type=="hom",1]))/exp(lm_fit_global_R$model[data$Type=="hom",1])))
+print(mean(100*abs(exp(lm_fit_global$fitted.values[data$Type=="inhib"])-exp(lm_fit_global$model[data$Type=="inhib",1]))/exp(lm_fit_global$model[data$Type=="inhib",1])))
+print(mean(100*abs(exp(lm_fit_global_R$fitted.values[data$Type=="inhib"])-exp(lm_fit_global_R$model[data$Type=="inhib",1]))/exp(lm_fit_global_R$model[data$Type=="inhib",1])))
 save(lm_fit_global,file="Results/lm_fit_global.rda")
 save(lm_fit_global_R,file="Results/lm_fit_global_R.rda")
 
@@ -103,12 +103,13 @@ for (type in c("clust","hom","reg")){
   aux$log_opt=log(aux$opt)
 
   lm_fit<-lm(log_opt~log_sd,data=aux)
-  print(round(mean(100*abs(lm_fit$fitted.values-lm_fit$model[,1])/lm_fit$model[,1]),2))
+  print(mean(100*abs(exp(lm_fit$fitted.values)-exp(lm_fit$model[,1]))/exp(lm_fit$model[,1])))
 
   lm_fit<-lm(log_opt~log_sd*R,data=aux)
-  print(round(mean(100*abs(lm_fit$fitted.values-lm_fit$model[,1])/lm_fit$model[,1]),2))
+  print(mean(100*abs(exp(lm_fit$fitted.values)-exp(lm_fit$model[,1]))/exp(lm_fit$model[,1])))
 
 }
+
 
 
 

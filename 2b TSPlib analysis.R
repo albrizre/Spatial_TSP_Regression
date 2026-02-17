@@ -100,25 +100,25 @@ data_analysis=merge(data,data_class,by="instance")
 lm_fit_global=lm(log(opt)~log(sd),data=data_analysis)
 lm_fit_global_R=lm(log(opt)~log(sd)*R,data=data_analysis)
 
-print(round(mean(100*abs(lm_fit_global$fitted.values[data_analysis$type=="Clustered"]-lm_fit_global$model[data_analysis$type=="Clustered",1])/lm_fit_global$model[data_analysis$type=="Clustered",1]),2))
-print(round(mean(100*abs(lm_fit_global$fitted.values[data_analysis$type=="Random"]-lm_fit_global$model[data_analysis$type=="Random",1])/lm_fit_global$model[data_analysis$type=="Random",1]),2))
-print(round(mean(100*abs(lm_fit_global$fitted.values[data_analysis$type=="Regular"]-lm_fit_global$model[data_analysis$type=="Regular",1])/lm_fit_global$model[data_analysis$type=="Regular",1]),2))
-print(round(summary(lm_fit_global)$r.squared,2))
+print(round(summary(lm_fit_global_R)$adj.r.squared,2))
+print(round(mean(100*abs(exp(lm_fit_global$fitted.values[data_analysis$type=="Clustered"])-exp(lm_fit_global$model[data_analysis$type=="Clustered",1]))/exp(lm_fit_global$model[data_analysis$type=="Clustered",1])),2))
+print(round(mean(100*abs(exp(lm_fit_global$fitted.values[data_analysis$type=="Random"])-exp(lm_fit_global$model[data_analysis$type=="Random",1]))/exp(lm_fit_global$model[data_analysis$type=="Random",1])),2))
+print(round(mean(100*abs(exp(lm_fit_global$fitted.values[data_analysis$type=="Regular"])-exp(lm_fit_global$model[data_analysis$type=="Regular",1]))/exp(lm_fit_global$model[data_analysis$type=="Regular",1])),2))
 
-print(round(summary(lm_fit_global_R)$r.squared,2))
-print(round(mean(100*abs(lm_fit_global_R$fitted.values[data_analysis$type=="Clustered"]-lm_fit_global_R$model[data_analysis$type=="Clustered",1])/lm_fit_global_R$model[data_analysis$type=="Clustered",1]),2))
-print(round(mean(100*abs(lm_fit_global_R$fitted.values[data_analysis$type=="Random"]-lm_fit_global_R$model[data_analysis$type=="Random",1])/lm_fit_global_R$model[data_analysis$type=="Random",1]),2))
-print(round(mean(100*abs(lm_fit_global_R$fitted.values[data_analysis$type=="Regular"]-lm_fit_global_R$model[data_analysis$type=="Regular",1])/lm_fit_global_R$model[data_analysis$type=="Regular",1]),2))
+print(round(summary(lm_fit_global_R)$adj.r.squared,2))
+print(round(mean(100*abs(exp(lm_fit_global_R$fitted.values[data_analysis$type=="Clustered"])-exp(lm_fit_global_R$model[data_analysis$type=="Clustered",1]))/exp(lm_fit_global_R$model[data_analysis$type=="Clustered",1])),2))
+print(round(mean(100*abs(exp(lm_fit_global_R$fitted.values[data_analysis$type=="Random"])-exp(lm_fit_global_R$model[data_analysis$type=="Random",1]))/exp(lm_fit_global_R$model[data_analysis$type=="Random",1])),2))
+print(round(mean(100*abs(exp(lm_fit_global_R$fitted.values[data_analysis$type=="Regular"])-exp(lm_fit_global_R$model[data_analysis$type=="Regular",1]))/exp(lm_fit_global_R$model[data_analysis$type=="Regular",1])),2))
 
 for (type in c("Clustered","Random","Regular")){
 
   aux=data_analysis[data_analysis$type==type,]
   lm_fit<-lm(log(opt)~log(sd),data=aux)
   lm_fit_R<-lm(log(opt)~log(sd)*R,data=aux)
-  print(round(mean(100*abs(lm_fit$fitted.values-lm_fit$model[,1])/lm_fit$model[,1]),2))
-  print(round(mean(100*abs(lm_fit_R$fitted.values-lm_fit_R$model[,1])/lm_fit_R$model[,1]),2))
-  print(round(summary(lm_fit)$r.squared,2))
-  print(round(summary(lm_fit_R)$r.squared,2))
+  print(round(mean(100*abs(exp(lm_fit$fitted.values)-exp(lm_fit$model[,1]))/exp(lm_fit$model[,1])),2))
+  print(round(mean(100*abs(exp(lm_fit_R$fitted.values)-exp(lm_fit_R$model[,1]))/exp(lm_fit_R$model[,1])),2))
+  print(round(summary(lm_fit)$adj.r.squared,2))
+  print(round(summary(lm_fit_R)$adj.r.squared,2))
 
 }
 
@@ -138,4 +138,5 @@ if (nrow(part2) < nrow(part1)) {
 combined_df <- cbind(part1, part2)
 library(xtable)
 print(xtable(combined_df), include.rownames = FALSE)
+
 

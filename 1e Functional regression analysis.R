@@ -55,8 +55,8 @@ for (type in c("hom","reg","clust")){
                   basis.x = list(X = basis1, X_int = basis1),
                   basis.b = list(X = basis2, X_int = basis2))
   results_table=rbind(results_table,data.frame(type,
-                                               MAPE=mean(100*abs(reg$fitted.values-reg$y)/reg$y),
-                                               MAPE_int=mean(100*abs(reg_int$fitted.values-log(data$opt[which(data$sd>=1)]))/log(data$opt[which(data$sd>=1)])),
+                                               MAPE=mean(100*abs(exp(reg$fitted.values)-exp(reg$y))/exp(reg$y)),
+                                               MAPE_int=mean(100*abs(exp(reg_int$fitted.values)-exp(log(data$opt[which(data$sd>=1)])))/exp(log(data$opt[which(data$sd>=1)]))),
                                                R2=reg$r2,
                                                R2_int=reg_int$r2))
 
@@ -105,8 +105,8 @@ for (type in c("hom","reg","clust")){
     legend.position = "bottom"))
 
   obs = log(data$opt)
-  error_lm  <- 100*abs(obs - lm_fit$fitted.values)/obs
-  error_fda <- 100*abs(obs - reg$fitted.values)/obs
+  error_lm  <- 100*abs(exp(obs) - exp(lm_fit$fitted.values))/exp(obs)
+  error_fda <- 100*abs(exp(obs) - exp(reg$fitted.values))/exp(obs)
   df_error <- rbind(df_error,data.frame(type,
     Error = c(error_lm, error_fda),
     Model = rep(c("Linear regression model (SD)", "Functional regression model (CDF)"), each = length(obs))))
@@ -167,3 +167,4 @@ print(ggplot(df_error, aes(x = log(Error), col = Model)) +
 
 # View results
 results_table[c(3,1,2),]
+

@@ -2,7 +2,7 @@ This repository contains the R codes that allows reproducing the main results of
 
 The scripts are organized sequentially into two main groups: **Simulation Studies** and **TSPLIB Analysis**.
 
-### 1. Simulation Studies (1a – 1f)
+### 1. Simulation Studies (1a – 1e)
 These R scripts establish the baseline by simulating various spatial point processes and applying functional data analysis.
 
 * **1a Sim study clust.R**: Generates clustered instances with a Neyman-Scott process.

@@ -1,4 +1,4 @@
-This repository contains the R code used associated with the paper...
+This repository contains the R code that allows reproducing the main results of the paper *Predicting optimal TSP tour lengths using spatial statistics and functional data methods*, by Álvaro Briz-Redón, Teresa León, and Juanjo Peiró.
 
 The scripts are organized sequentially into two main groups: **Simulation Studies** and **TSPLIB Analysis**.
 

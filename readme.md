@@ -10,7 +10,6 @@ These R scripts establish the baseline by simulating various spatial point proce
 * **1c Sim study reg.R**: Generates regular instances with a simple sequential inhibition process.
 * **1d Linear regression analysis.R**: Performs a linear regression analysis on optimal tour lengths, using the standard deviation as a covariate (with or without interaction with the Clark-Evans statistic).
 * **1e Functional regression analysis.R**: Performs a functional regression analysis on optimal tour lengths, using the cumulative distribution function as a functional covariate (with or without interaction with the Clark-Evans statistic).
-* **1f FPCA.R**: Performs a Functional Principal Component Analysis (FPCA) on the cumulative distribution functions of the generated instances.
 
 ### 2. TSPLIB Analysis (2a – 2b)
 These R scripts apply the proposed methods to the TSPLIB benchmark library.

@@ -1,4 +1,4 @@
-This repository contains the R codes that allows reproducing the main results of the paper *Exploiting the spatial structure to predict optimal travelling salesperson tour lengths*.
+This repository contains the R codes that allow reproducing the main results of the paper *Exploiting the spatial structure to predict optimal travelling salesperson tour lengths*.
 
 The scripts are organized sequentially into two main groups: **Simulation Studies** and **TSPLIB Analysis**.
 

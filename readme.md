@@ -3,7 +3,7 @@ This repository contains the R codes that allow reproducing the main results of 
 The scripts are organized sequentially into two main groups: **Simulation Studies** and **TSPLIB Analysis**.
 
 ### 1. Simulation Studies (1a – 1e)
-These R scripts establish the baseline by simulating various spatial point processes and applying functional data analysis.
+These R scripts allow conducting the simulation studies described in the paper.
 
 * **1a Sim study clust.R**: Generates clustered instances with a Neyman-Scott process.
 * **1b Sim study hom.R**: Generates random instances with a Poisson homogeneous process.
@@ -12,7 +12,7 @@ These R scripts establish the baseline by simulating various spatial point proce
 * **1e Functional regression analysis.R**: Performs a functional regression analysis on optimal tour lengths, using the cumulative distribution function as a functional covariate (with or without interaction with the Clark-Evans statistic).
 
 ### 2. TSPLIB Analysis (2a – 2b)
-These R scripts apply the proposed methods to the TSPLIB benchmark library.
+These R scripts allow appling the proposed methods to the TSPLIB benchmark library.
 
 * **2a TSPlib data generation.R**: Reads TSPLIB files and obtains node coordinates, converting them into a format suitable for spatial analysis in R (e.g., `ppp` objects).
 * **2b TSPlib analysis.R**: Performs the classification of the TSPLIB instances based on their spatial structure and a linear regression analysis on optimal tour lengths, using the standard deviation as a covariate (with or without interaction with the Clark-Evans statistic).  

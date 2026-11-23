@@ -1,22 +1,51 @@
-This repository contains the R codes that allow reproducing the main results of the paper *Exploiting the spatial structure to predict optimal travelling salesperson tour lengths*.
+# Exploiting spatial structure to estimate TSP tour lengths
 
-The scripts are organized sequentially into two main groups: **Simulation Studies** and **TSPLIB Analysis**.
+This repository contains the R code and data used to reproduce the main results of the paper *Exploiting spatial structure to estimate TSP tour lengths*. It also provides functions to train the proposed regression models and predict tour lengths for new Euclidean TSP instances.
 
-### 1. Simulation Studies (1a – 1e)
-These R scripts allow conducting the simulation studies described in the paper.
+## Analysis scripts
 
-* **1a Sim study clust.R**: Generates clustered instances with a Neyman-Scott process.
-* **1b Sim study hom.R**: Generates random instances with a Poisson homogeneous process.
-* **1c Sim study reg.R**: Generates regular instances with a simple sequential inhibition process.
-* **1d Linear regression analysis.R**: Performs a linear regression analysis on optimal tour lengths, using the standard deviation as a covariate (with or without interaction with the Clark-Evans statistic).
+The scripts in `analysis/` are numbered and can be run individually from the repository root.
 
-### 2. TSPLIB Analysis (2a – 2b)
-These R scripts allow appling the proposed methods to the TSPLIB benchmark library.
+**Simulation studies**
 
-* **2a TSPlib data generation.R**: Reads TSPLIB files and obtains node coordinates, converting them into a format suitable for spatial analysis in R (e.g., `ppp` objects).
-* **2b TSPlib analysis.R**: Performs the classification of the TSPLIB instances based on their spatial structure and a linear regression analysis on optimal tour lengths, using the standard deviation as a covariate (with or without interaction with the Clark-Evans statistic).
+- `01_generate_simulation.R`: Generates clustered, random and regular spatial instances.
+- `02_simulation.R`: Fits and compares the regression models on the main simulated dataset.
+- `03_generate_cluster_sensitivity.R`: Generates additional clustered instances for the sensitivity study.
+- `04_cluster_sensitivity.R`: Evaluates the fitted models under different clustering parameters.
 
-Finally, we provide two extra R functions (in the *Functions* folder) that would allow the user to implement the main methods presented with different sets of instances:
+**TSPLIB analysis and figures**
 
-* **training_TSP_model.R**: This function allows training the linear regression models presented in the paper with a set of selected instances.
-* **predict_tsp_optimal_length.R**: This function allows predicting the optimal TSP tour length for a given set of instances. The user can specify the coefficients of the linear regression model from a model fitted with function training_TSP_model.R. Otherwise, the models fitted with the TSPlib library are employed for the prediction.
+- `05_tsplib.R`: Analyses the TSPLIB instances and compares the proposed models with alternative methods.
+- `06_figures.R`: Produces the figures in the paper from the saved analysis results.
+
+## Reproducing the results
+
+Install the required R packages once:
+
+```r
+install.packages(c("spatstat", "TSP", "ggplot2", "ggrepel", "MASS", "openxlsx"))
+```
+
+The original datasets and optimal tour lengths are included in `data/`. To reproduce the reported analyses, run:
+
+```r
+source("analysis/02_simulation.R")
+source("analysis/04_cluster_sensitivity.R")
+source("analysis/05_tsplib.R")
+source("analysis/06_figures.R")
+```
+
+Scripts 01 and 03 document and reproduce the simulation designs, but do not need to be rerun to analyse the original instances. Shared functions are stored in `R/`, and results and figures are saved in `results/` and `figures/`, respectively.
+
+## Training and prediction functions
+
+Two functions in `R/` support the application of the models to other instances:
+
+- `training_TSP_model.R`: Fits Models 1–3 using user-provided TSP instances and their **optimal tour lengths**.
+- `predict_tsp_optimal_length.R`: Predicts tour lengths and provides prediction intervals, using either a user-trained model or the supplied Model 3 fitted to the 77 TSPLIB instances.
+
+A working example of both functions is provided in `examples/train_and_predict.R`:
+
+```r
+source("examples/train_and_predict.R")
+```
